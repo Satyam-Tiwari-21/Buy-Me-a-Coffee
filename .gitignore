@@ -13,4 +13,11 @@ work/
 outputs/
 
 # npm cache
-npm-cache/
+npm-cache/# Temporary work directory
+work/
+
+# Logs
+*.log
+
+# Output directory
+outputs/
