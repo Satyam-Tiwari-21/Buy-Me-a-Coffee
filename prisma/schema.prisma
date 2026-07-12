@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Payment {
+  id                String        @id @default(cuid())
+  name              String?
+  email             String?
+  message           String?       @db.VarChar(500)
+  isAnonymous       Boolean       @default(false)
+  amount            Int
+  razorpayOrderId   String        @unique
+  razorpayPaymentId String?       @unique
+  status            PaymentStatus @default(CREATED)
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  @@index([status, createdAt])
+  @@index([email])
+}
+
+enum PaymentStatus {
+  CREATED
+  PAID
+  FAILED
+}

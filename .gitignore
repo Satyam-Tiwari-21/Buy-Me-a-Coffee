@@ -1,0 +1,16 @@
+node_modules
+.next
+.env
+.env.local
+*.log
+coverage
+# AI/Codex folders
+.agents/
+.codex/
+
+# Local cache/output
+work/
+outputs/
+
+# npm cache
+npm-cache/
